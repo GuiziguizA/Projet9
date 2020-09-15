@@ -19,6 +19,7 @@ import com.dummy.myerp.model.bean.comptabilite.CompteComptable;
 import com.dummy.myerp.model.bean.comptabilite.EcritureComptable;
 import com.dummy.myerp.model.bean.comptabilite.JournalComptable;
 import com.dummy.myerp.model.bean.comptabilite.LigneEcritureComptable;
+import com.dummy.myerp.model.bean.comptabilite.SequenceEcritureComptable;
 import com.dummy.myerp.technical.exception.FunctionalException;
 import com.dummy.myerp.technical.exception.NotFoundException;
 
@@ -76,7 +77,8 @@ public class ComptabiliteManagerImpl extends AbstractBusinessManager implements 
 		 * référence calculée (RG_Compta_5) 4. Enregistrer (insert/update) la valeur de
 		 * la séquence en persitance (table sequence_ecriture_comptable)
 		 */
-
+		List<SequenceEcritureComptable> listSequenceEcritureComptable = comptabiliteDao
+				.getListSequenceEcritureComptable();
 	}
 
 	/**

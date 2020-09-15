@@ -301,4 +301,23 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 		vSqlParams.addValue("ecriture_id", pEcritureId);
 		vJdbcTemplate.update(SQLdeleteListLigneEcritureComptable, vSqlParams);
 	}
+
+	@Override
+	public SequenceEcritureComptable getSequenceViaCodeAnnee(SequenceEcritureComptable pSequence)
+			throws NotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteSequenceEcritureComptable(SequenceEcritureComptable pSequence) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void insertSequenceEcritureComptable(SequenceEcritureComptable pSequence) {
+		// TODO Auto-generated method stub
+
+	}
 }

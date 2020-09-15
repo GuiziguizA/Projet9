@@ -16,7 +16,7 @@ public class SequenceEcritureComptable {
 	private Integer derniereValeur;
 
 	@NotNull
-	private JournalComptable journal;
+	private String journalCode;
 
 	// ==================== Constructeurs ====================
 	/**
@@ -53,12 +53,12 @@ public class SequenceEcritureComptable {
 		derniereValeur = pDerniereValeur;
 	}
 
-	public JournalComptable getJournal() {
-		return journal;
+	public String getJournalCode() {
+		return journalCode;
 	}
 
-	public void setJournal(JournalComptable journal) {
-		this.journal = journal;
+	public void setJournalCode(String journalCode) {
+		this.journalCode = journalCode;
 	}
 
 	// ==================== Méthodes ====================

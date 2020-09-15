@@ -5,38 +5,55 @@ import java.util.List;
 import com.dummy.myerp.consumer.ConsumerHelper;
 import com.dummy.myerp.model.bean.comptabilite.CompteComptable;
 
-
 /**
  * Cache DAO de {@link CompteComptable}
  */
 public class CompteComptableDaoCache {
 
-    // ==================== Attributs ====================
-    /** The List compte comptable. */
-    private List<CompteComptable> listCompteComptable;
+	// ==================== Attributs ====================
+	/** The List compte comptable. */
+	private List<CompteComptable> listCompteComptable;
 
+	// ==================== Constructeurs ====================
+	/**
+	 * Instantiates a new Compte comptable dao cache.
+	 */
+	public CompteComptableDaoCache() {
+	}
 
-    // ==================== Constructeurs ====================
-    /**
-     * Instantiates a new Compte comptable dao cache.
-     */
-    public CompteComptableDaoCache() {
-    }
+	// ==================== Méthodes ====================
+	/**
+	 * Gets by numero.
+	 *
+	 * @param pNumero the numero
+	 * @return {@link CompteComptable} ou {@code null}
+	 */
+	/*
+	 * public CompteComptable getByNumero(Integer pNumero) { if (listCompteComptable
+	 * == null) { listCompteComptable =
+	 * ConsumerHelper.getDaoProxy().getComptabiliteDao().getListCompteComptable(); }
+	 * 
+	 * CompteComptable vRetour = CompteComptable.getByNumero(listCompteComptable,
+	 * pNumero); return vRetour; }
+	 */
+	public CompteComptable getByNumero(Integer pNumero) {
+		if (listCompteComptable == null) {
+			listCompteComptable = getListCompteComptable();
+		}
 
+		CompteComptable vRetour = getByNumeroCompte(pNumero);
+		return vRetour;
+	}
 
-    // ==================== Méthodes ====================
-    /**
-     * Gets by numero.
-     *
-     * @param pNumero the numero
-     * @return {@link CompteComptable} ou {@code null}
-     */
-    public CompteComptable getByNumero(Integer pNumero) {
-        if (listCompteComptable == null) {
-            listCompteComptable = ConsumerHelper.getDaoProxy().getComptabiliteDao().getListCompteComptable();
-        }
+	public CompteComptable getByNumeroCompte(Integer pNumero) {
+		if (listCompteComptable == null) {
+			return null;
+		} else {
+			return CompteComptable.getByNumero(listCompteComptable, pNumero);
+		}
+	}
 
-        CompteComptable vRetour = CompteComptable.getByNumero(listCompteComptable, pNumero);
-        return vRetour;
-    }
+	public List<CompteComptable> getListCompteComptable() {
+		return ConsumerHelper.getDaoProxy().getComptabiliteDao().getListCompteComptable();
+	}
 }

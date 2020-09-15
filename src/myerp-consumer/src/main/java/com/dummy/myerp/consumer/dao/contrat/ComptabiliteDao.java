@@ -85,4 +85,10 @@ public interface ComptabiliteDao {
 	 */
 	void deleteEcritureComptable(Integer pId);
 
+	SequenceEcritureComptable getSequenceViaCodeAnnee(SequenceEcritureComptable pSequence) throws NotFoundException;
+
+	void deleteSequenceEcritureComptable(SequenceEcritureComptable pSequence);
+
+	void insertSequenceEcritureComptable(SequenceEcritureComptable pSequence);
+
 }
