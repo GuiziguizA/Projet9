@@ -11,13 +11,17 @@ import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.dummy.myerp.model.bean.comptabilite.CompteComptable;
 
 public class CompteComptableRMTest {
 
 	@Before
-	public void setUp() throws Exception {
+	public void init() {
+		JdbcTemplate template = Mockito.mock(JdbcTemplate.class);
+		NamedParameterJdbcTemplate nameJdbc = Mockito.mock(NamedParameterJdbcTemplate.class);
+
 	}
 
 	private Connection connection;
@@ -50,8 +54,8 @@ public class CompteComptableRMTest {
 //WHEN
 		CompteComptable compteComptable = template.queryForObject("SELECT * FROM compte_comptable WHERE id = -3", rm);
 //THEN
-		assertEquals(compteComptable.getNumero(), result.getNumero());
-		assertEquals(compteComptable.getLibelle(), result.getLibelle());
+		assertEquals(compteComptable.getNumero(), new Integer(25446));
+		assertEquals(compteComptable.getLibelle(), "Taxes sur le chiffre d'affaires déductibles");
 	}
 
 }

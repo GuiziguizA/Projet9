@@ -32,6 +32,10 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 	/** Instance unique de la classe (design pattern Singleton) */
 	private static final ComptabiliteDaoImpl INSTANCE = new ComptabiliteDaoImpl();
 
+	JdbcTemplate template;
+	NamedParameterJdbcTemplate namedJdbcTemplate;
+	AbstractDbConsumer abstractDbConsumer;
+
 	/**
 	 * Renvoie l'instance unique de la classe (design pattern Singleton).
 	 *
@@ -48,6 +52,13 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 		super();
 	}
 
+	public ComptabiliteDaoImpl(JdbcTemplate template, NamedParameterJdbcTemplate namedTemplate,
+			AbstractDbConsumer adc) {
+		template = template;
+		namedJdbcTemplate = namedTemplate;
+		abstractDbConsumer = adc;
+	}
+
 	// ==================== Méthodes ====================
 	/** SQLgetListCompteComptable */
 	private static String SQLgetListCompteComptable;
@@ -58,9 +69,11 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 
 	@Override
 	public List<CompteComptable> getListCompteComptable() {
-		JdbcTemplate vJdbcTemplate = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		if (template == null) {
+			template = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		}
 		CompteComptableRM vRM = new CompteComptableRM();
-		List<CompteComptable> vList = vJdbcTemplate.query(SQLgetListCompteComptable, vRM);
+		List<CompteComptable> vList = template.query(SQLgetListCompteComptable, vRM);
 		return vList;
 	}
 
@@ -73,9 +86,11 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 
 	@Override
 	public List<SequenceEcritureComptable> getListSequenceEcritureComptable() {
-		JdbcTemplate vJdbcTemplate = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		if (template == null) {
+			template = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		}
 		SequenceEcritureComptableRM vRM = new SequenceEcritureComptableRM();
-		List<SequenceEcritureComptable> vList = vJdbcTemplate.query(SQLgetListSequenceEcritureComptable, vRM);
+		List<SequenceEcritureComptable> vList = template.query(SQLgetListSequenceEcritureComptable, vRM);
 		return vList;
 	}
 
@@ -88,9 +103,11 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 
 	@Override
 	public List<JournalComptable> getListJournalComptable() {
-		JdbcTemplate vJdbcTemplate = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		if (template == null) {
+			template = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		}
 		JournalComptableRM vRM = new JournalComptableRM();
-		List<JournalComptable> vList = vJdbcTemplate.query(SQLgetListJournalComptable, vRM);
+		List<JournalComptable> vList = template.query(SQLgetListJournalComptable, vRM);
 		return vList;
 	}
 
@@ -105,9 +122,11 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 
 	@Override
 	public List<EcritureComptable> getListEcritureComptable() {
-		JdbcTemplate vJdbcTemplate = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		if (template == null) {
+			template = new JdbcTemplate(this.getDataSource(DataSourcesEnum.MYERP));
+		}
 		EcritureComptableRM vRM = new EcritureComptableRM();
-		List<EcritureComptable> vList = vJdbcTemplate.query(SQLgetListEcritureComptable, vRM);
+		List<EcritureComptable> vList = template.query(SQLgetListEcritureComptable, vRM);
 		return vList;
 	}
 
@@ -196,7 +215,7 @@ public class ComptabiliteDaoImpl extends AbstractDbConsumer implements Comptabil
 
 		// ----- Récupération de l'id
 		Integer vId = this.queryGetSequenceValuePostgreSQL(DataSourcesEnum.MYERP, "myerp.ecriture_comptable_id_seq",
-				Integer.class);
+				Integer.class, template);
 		pEcritureComptable.setId(vId);
 
 		// ===== Liste des lignes d'écriture
