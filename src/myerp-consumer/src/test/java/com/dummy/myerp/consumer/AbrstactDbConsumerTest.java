@@ -39,8 +39,8 @@ public class AbrstactDbConsumerTest extends AbstractDbConsumer {
 
 	@Test
 	public void getDataSourceTest() {
-
 		// GIVEN
+
 		Map<DataSourcesEnum, DataSource> mapDataSource = mock(Map.class);
 		Mockito.when(mapDataSource.get(Mockito.anyObject())).thenReturn(new FakeDataSource());
 		configure(mapDataSource);
