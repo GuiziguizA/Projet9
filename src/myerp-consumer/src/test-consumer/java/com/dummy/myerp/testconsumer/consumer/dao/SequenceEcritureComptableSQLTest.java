@@ -4,7 +4,6 @@ import static com.dummy.myerp.testconsumer.consumer.builder.SequenceBuilder.aSeq
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,7 +22,7 @@ public class SequenceEcritureComptableSQLTest extends ConsumerTestCase {
 	@Rule
 	public ExpectedException exceptionRule = ExpectedException.none();
 
-	@Test(expected = NotFoundException.class)
+	@Test
 	public void delete_sequence() {
 
 		// GIVEN
@@ -31,11 +30,6 @@ public class SequenceEcritureComptableSQLTest extends ConsumerTestCase {
 
 		// WHEN
 		comptabiliteDao.deleteSequenceEcritureComptable(sequenceEcritureComptable);
-		try {
-			Assert.assertNull(comptabiliteDao.getSequenceViaCodeAnnee(sequenceEcritureComptable));
-		} catch (NotFoundException e) {
-
-		}
 
 	}
 
@@ -56,12 +50,11 @@ public class SequenceEcritureComptableSQLTest extends ConsumerTestCase {
 		comptabiliteDao.insertSequenceEcritureComptable(sequenceEcritureComptable);
 	}
 
-	@Test(expected = NotFoundException.class)
+	@Test
 	public void select_sequence_with_code_and_annee() throws NotFoundException {
 
 		// GIVEN
 		SequenceEcritureComptable sequenceEcritureComptable = aSequence().annee(2016).journalCode("AC").build();
-		SequenceEcritureComptable sequenceEcritureComptable1 = aSequence().annee(2019).journalCode("AC").build();
 
 		// WHEN
 		sequenceEcritureComptable = comptabiliteDao.getSequenceViaCodeAnnee(sequenceEcritureComptable);
