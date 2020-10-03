@@ -87,8 +87,13 @@ public interface ComptabiliteDao {
 
 	SequenceEcritureComptable getSequenceViaCodeAnnee(SequenceEcritureComptable pSequence) throws NotFoundException;
 
-	void deleteSequenceEcritureComptable(SequenceEcritureComptable pSequence);
-
 	void insertSequenceEcritureComptable(SequenceEcritureComptable pSequence);
+
+	void updateSequenceEcritureComptable(SequenceEcritureComptable pSequenceEcritureComptable);
+
+	SequenceEcritureComptable getSequenceEcritureComptable(String pJournalCode, Integer pAnnee)
+			throws NotFoundException;
+
+	void deleteSequenceEcritureComptable(SequenceEcritureComptable pSequence);
 
 }

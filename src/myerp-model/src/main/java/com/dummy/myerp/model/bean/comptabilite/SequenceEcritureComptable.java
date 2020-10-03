@@ -32,6 +32,7 @@ public class SequenceEcritureComptable {
 	 * @param pDerniereValeur -
 	 */
 	public SequenceEcritureComptable(Integer pAnnee, Integer pDerniereValeur) {
+
 		annee = pAnnee;
 		derniereValeur = pDerniereValeur;
 	}

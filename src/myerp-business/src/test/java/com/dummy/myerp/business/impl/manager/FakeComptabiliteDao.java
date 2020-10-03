@@ -1,4 +1,4 @@
-package com.dummy.myerp.consumer.dao.impl.db.fake;
+package com.dummy.myerp.business.impl.manager;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,14 +13,14 @@ import com.dummy.myerp.model.bean.comptabilite.LigneEcritureComptable;
 import com.dummy.myerp.model.bean.comptabilite.SequenceEcritureComptable;
 import com.dummy.myerp.technical.exception.NotFoundException;
 
-public class FakeComptabiblieDao implements ComptabiliteDao {
+public class FakeComptabiliteDao implements ComptabiliteDao {
 
 	List<EcritureComptable> fakeListEcriture = new ArrayList<>();
 	List<CompteComptable> fakeListCompte = new ArrayList<>();
 	List<JournalComptable> fakeListJournal = new ArrayList<>();
 	List<SequenceEcritureComptable> fakeListSequence = new ArrayList<>();
 
-	public FakeComptabiblieDao() {
+	public FakeComptabiliteDao() {
 		initFakeDb();
 	}
 
@@ -69,8 +69,7 @@ public class FakeComptabiblieDao implements ComptabiliteDao {
 
 	@Override
 	public void loadListLigneEcriture(EcritureComptable pEcritureComptable) {
-		pEcritureComptable.getListLigneEcriture().add(new LigneEcritureComptable());
-		pEcritureComptable.getListLigneEcriture().add(new LigneEcritureComptable());
+
 	}
 
 	@Override
@@ -131,7 +130,7 @@ public class FakeComptabiblieDao implements ComptabiliteDao {
 		vEcritureComptable1.setDate(new Date());
 		vEcritureComptable1.setId(45);
 		vEcritureComptable1.setLibelle("Libelle");
-		vEcritureComptable1.setReference("AC-2019/00001");
+		vEcritureComptable1.setReference("AC-2020/00001");
 		vEcritureComptable1.getListLigneEcriture()
 				.add(new LigneEcritureComptable(new CompteComptable(1), null, new BigDecimal(123), null));
 		vEcritureComptable1.getListLigneEcriture()
@@ -141,7 +140,7 @@ public class FakeComptabiblieDao implements ComptabiliteDao {
 		vEcritureComptable2.setDate(new Date());
 		vEcritureComptable2.setId(12);
 		vEcritureComptable2.setLibelle("Libelle");
-		vEcritureComptable2.setReference("RT-2019/00011");
+		vEcritureComptable2.setReference("RT-2020/00011");
 		vEcritureComptable2.getListLigneEcriture()
 				.add(new LigneEcritureComptable(new CompteComptable(1), null, new BigDecimal(123), null));
 		vEcritureComptable2.getListLigneEcriture()
@@ -152,10 +151,10 @@ public class FakeComptabiblieDao implements ComptabiliteDao {
 		JournalComptable journalComptable2 = new JournalComptable("RT", "Retrait");
 		fakeListJournal.add(journalComptable1);
 		fakeListJournal.add(journalComptable2);
-		SequenceEcritureComptable sequenceEcritureComptable1 = new SequenceEcritureComptable(new Integer(2019),
+		SequenceEcritureComptable sequenceEcritureComptable1 = new SequenceEcritureComptable(new Integer(2020),
 				new Integer(55));
 		sequenceEcritureComptable1.setJournalCode("AC");
-		SequenceEcritureComptable sequenceEcritureComptable2 = new SequenceEcritureComptable(new Integer(2019),
+		SequenceEcritureComptable sequenceEcritureComptable2 = new SequenceEcritureComptable(new Integer(2020),
 				new Integer(12));
 		sequenceEcritureComptable2.setJournalCode("RT");
 		fakeListSequence.add(sequenceEcritureComptable1);
