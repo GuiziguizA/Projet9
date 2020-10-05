@@ -1,26 +1,28 @@
 pipeline {
     agent any
-   
+     tools {
+        maven "Maven"
+    }
+
     stages {
 
 	stage('compile App'){
-	
+	git url: 'https://github.com/GuiziguizA/Projet9.git'
 	steps{
-		withMaven(maven : 'apache-maven-3.6.3'){
+		
 	
 			bat 'mvn clean compile'
 
-				}
+				
 			}
 		}
 	stage('Test app'){
-	
+	git url: 'https://github.com/GuiziguizA/Projet9.git'
 	steps{
-		withMaven(maven : 'apache-maven-3.6.3'){
-	
+		
 			bat 'mvn test'
 
-				}
+				
 			}
 		}
 	}
