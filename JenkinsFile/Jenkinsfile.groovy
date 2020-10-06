@@ -1,28 +1,29 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.3.9'
-        jdk 'jdk8'
+     tools {
+        maven "Maven"
     }
-    stages {
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
-            }
-        }
 
-        stage ('Build') {
-            steps {
-                sh 'mvn clean test' 
-            }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
-        }
+    stages {
+
+	stage('build'){
+	git url: 'https://github.com/GuiziguizA/Projet9.git'
+	steps{
+		
+	
+			bat 'mvn clean compile'
+
+				
+			}
+		}
+	stage('test'){
+	git url: 'https://github.com/GuiziguizA/Projet9.git'
+	steps{
+		
+			bat 'mvn test'
+
+				
+			}
+		}
+	}
     }
-}
