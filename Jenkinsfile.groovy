@@ -6,7 +6,7 @@ pipeline {
 
     stages {
 
-	stage('compile App'){
+	stage('build'){
 	git url: 'https://github.com/GuiziguizA/Projet9.git'
 	steps{
 		
@@ -16,7 +16,7 @@ pipeline {
 				
 			}
 		}
-	stage('Test app'){
+	stage('test'){
 	git url: 'https://github.com/GuiziguizA/Projet9.git'
 	steps{
 		

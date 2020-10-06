@@ -293,6 +293,18 @@
                     </configuration>
                 </plugin>
 
+
+
+<!-- ==========jacoco ================ -->
+
+
+                <plugin>
+                    <groupId>nl.deholtmans</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>1.0-SNAPSHOT</version>
+                </plugin>
+            
+
                 <!-- ===== "Filtrage/Parsing" des resources ===== -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -388,8 +400,33 @@
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>1.10</version>
                 </plugin>
+                <!-- =============Jacoco============== -->
+                  <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+            <execution>
+                <id>prepare-agent</id>
+                <phase>initialize</phase>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>report</id>
+                <goals>
+                    <goal>report-aggregate</goal>
+                </goals>
+                <phase>verify</phase>
+            </execution>
+        </executions>
+    </plugin>
+                
+                
             </plugins>
         </pluginManagement>
+      
     </build>
 
 
