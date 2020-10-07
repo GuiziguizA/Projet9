@@ -6,7 +6,8 @@ pipeline{
     stages{
         stage("Compile the source code")	{
             steps	{
-            bat "mvn clean compile"
+        bat "cd src"    
+	bat "mvn clean compile"
             }
         }
         stage("Test the source code")	{
