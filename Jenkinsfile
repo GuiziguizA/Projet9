@@ -8,7 +8,7 @@ pipeline{
         stage("Compile the source code")	{
             steps	{
            
-	sh "mvn clean compile"
+	sh "./mvnw compile"
             }
         }
     }
