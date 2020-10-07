@@ -6,8 +6,7 @@ pipeline{
     stages{
         stage("Compile the source code")	{
             steps	{
-            sh 'chmod --recursive a+rwx ./'
-            sh "./mvnw compile"
+            bat "mvn clean compile"
             }
         }
         stage("Test the source code")	{
