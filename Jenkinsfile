@@ -1,8 +1,6 @@
 pipeline{
     agent any
-    triggers{
-		pollSCM('* * * * *')
-	}
+    
     stages{
       stage ('Compile') {
 steps {
@@ -15,6 +13,7 @@ bat'mvn clean compile '
 steps {
 withMaven (maven: 'apache-maven-3.6.3') {
 bat'mvn test '
+}
 }
 }
 }
