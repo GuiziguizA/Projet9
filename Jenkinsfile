@@ -1,21 +1,11 @@
 pipeline{
-    agent any
-	 
-    triggers{
-		pollSCM('* * * * *')
-	}
-
-    stages{
-	 
-
-        
-        
-	stage("Compile the source code")	{
-            steps	{
-            bat 'chmod --recursive a+rwx ./'
-            bat "./mvnw compile"
-            }
-            }
-        
+   node {
+    def os = System.properties['os.name'].toLowerCase()
+    echo "OS: ${os}"
+    if (os.contains("linux")) {
+      sh "mvn install" 
+    } else {
+      bat "mvn install"
     }
+}
 }
