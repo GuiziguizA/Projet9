@@ -9,8 +9,10 @@ pipeline{
 
     stages{
 	 stage("Maven") {
+	 steps	{
               bat '${MAVEN_HOME}/bin/mvn -B verify'
            }
+}
         stage("Compile the source code")	{
             steps	{
         
