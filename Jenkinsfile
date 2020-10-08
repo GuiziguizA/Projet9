@@ -1,5 +1,4 @@
-pipeline{
-   node {
+node {
     def os = System.properties['os.name'].toLowerCase()
     echo "OS: ${os}"
     if (os.contains("linux")) {
@@ -8,4 +7,4 @@ pipeline{
       bat "mvn install"
     }
 }
-}
+
