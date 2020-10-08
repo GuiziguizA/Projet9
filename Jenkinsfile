@@ -4,18 +4,18 @@ pipeline{
 		pollSCM('* * * * *')
 	}
     stages{
-      stage ('Compile Stage') {
+      stage ('Compile') {
 steps {
-withMaven (maven: 'apache-maven-3.6.1') {
+withMaven (maven: 'apache-maven-3.6.3') {
 bat'mvn clean compile '
 }
 }
 }
-        stage("Test the source code")	{
-            steps	{
-            bat "mvn test"
-            }
-        }
-         
-        }
+            stage ('Test') {
+steps {
+withMaven (maven: 'apache-maven-3.6.3') {
+bat'mvn test '
+}
+}
+}
 }
