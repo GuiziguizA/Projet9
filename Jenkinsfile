@@ -12,8 +12,8 @@ pipeline{
         
 	stage("Compile the source code")	{
             steps	{
-            sh 'chmod --recursive a+rwx ./'
-            sh "./mvnw compile"
+            bat 'chmod --recursive a+rwx ./'
+            bat "./mvnw compile"
             }
             }
         
