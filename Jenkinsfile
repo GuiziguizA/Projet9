@@ -5,7 +5,7 @@ pipeline{
 	}
     stages{
         stage("Compile the source code")	{
-            steps	{
+             withMaven	{
             
             bat "mvn compile"
             }
