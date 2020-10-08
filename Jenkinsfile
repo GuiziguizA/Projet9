@@ -5,8 +5,8 @@ pipeline{
       stage ('Compile') {
 steps {
 withMaven (maven: 'apache-maven-3.6.3') {
-bat 'cd src'
-bat'mvn clean compile '
+
+bat'./src mvn clean compile '
 }
 }
 }
