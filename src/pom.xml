@@ -404,7 +404,7 @@
                <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.2</version>
+        <version>0.8.6</version>
         <executions>
             <execution>
                 <goals>
@@ -430,6 +430,30 @@
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
 </plugin>
+
+<plugin> 
+     <groupId>org.jacoco</groupId> 
+     <artifactId>jacoco-maven-plugin</artifactId> 
+      <version>0.8.2</version> 
+     <executions> 
+      <execution> 
+      <configuration> 
+       <destFile>${project.build.directory}/jacoco.exec</destFile> 
+      </configuration> 
+      </execution> 
+      <execution> 
+      <id>it-report</id> 
+      <phase>verify</phase> 
+      <goals>   
+       <goal>report-aggregate</goal> 
+      </goals> 
+      <configuration> 
+      <!-- <dataFileIncludes>**/jacoco.exec</dataFileIncludes> --> 
+       <outputDirectory>${project.build.directory}/coverage-reports/jacoco</outputDirectory> 
+      </configuration> 
+      </execution> 
+     </executions> 
+     </plugin> 
       </plugins>
     </build>
 
@@ -572,4 +596,6 @@
             </plugin>
         </plugins>
     </reporting>
+    
+
 </project>

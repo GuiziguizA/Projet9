@@ -2,29 +2,17 @@ package com.dummy.myerp.consumer.dao.impl.db.rowmapper.comptabilite;
 
 import static org.junit.Assert.assertEquals;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import com.dummy.myerp.model.bean.comptabilite.CompteComptable;
 
 public class CompteComptableRMTest {
-
-	@Before
-	public void init() {
-		JdbcTemplate template = Mockito.mock(JdbcTemplate.class);
-		NamedParameterJdbcTemplate nameJdbc = Mockito.mock(NamedParameterJdbcTemplate.class);
-
-	}
-
-	private Connection connection;
 
 	@Test
 	public void mapRow() {
