@@ -55,7 +55,6 @@ public class ComptabiliteManagerImplTest {
 
 		// THEN
 		assertNotEquals(oldRef, vEcritureComptable.getReference());
-		vEcritureComptable.setJournal(new JournalComptable("WW", "TestThrow"));
 	}
 
 	@Test

@@ -24,7 +24,7 @@ public class EcritureComptable {
 	@NotNull
 	private JournalComptable journal;
 	/** The Reference. */
-	@Pattern(regexp = "\\d{1,5}-\\d{4}/\\d{5}")
+	@Pattern(regexp = "\\w{2}-\\d{4}/\\d{5}")
 	private String reference;
 	/** The Date. */
 	@NotNull
@@ -88,7 +88,8 @@ public class EcritureComptable {
 	/**
 	 * Calcul et renvoie le total des montants au débit des lignes d'écriture
 	 *
-	 * @return {@link BigDecimal}, {@link BigDecimal#ZERO} si aucun montant au débit
+	 * @return {@link BigDecimal}, {@link BigDecimal#ZERO} si aucun montant au
+	 *         débit
 	 */
 	// TODO à tester
 	public BigDecimal getTotalDebit() {
